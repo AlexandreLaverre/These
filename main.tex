@@ -1,0 +1,149 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% OXFORD THESIS TEMPLATE
+
+% Originally by Keith A. Gillow (gillow@maths.ox.ac.uk), 1997
+% Modified by Sam Evans (sam@samuelevansresearch.org), 2007
+% Modified by John McManigle (john@oxfordechoes.com), 2015
+% Modified by Maud Gautier (https://github.com/MaudGautier), 2019
+% Modified by Thibault Latrille (https://github.com/ThibaultLatrille), 2020
+% Modified by Alexandre Laverré (alex.laverre@gmail.com), 2022
+%
+% This version Copyright (c) 2020 Thibault Latrille
+%
+% Broad permissions are granted to use, modify, and distribute this software
+% as specified in the MIT License included in this distribution's LICENSE file.
+
+%%%%% CHOOSE PAGE LAYOUT
+%\documentclass[a4paper,openright,twoside]{thesis}
+\documentclass[a4paper,oneside,nobind]{thesis}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{natbib}
+\usepackage{bm}
+\usepackage{bbm}
+%\usepackage{flipbook}
+\definecolor{Nonpolar}{HTML}{fef1d2}
+\definecolor{Polar}{HTML}{a9fdd8}
+\definecolor{Basic}{HTML}{d7f8ff}
+\definecolor{Acidic}{HTML}{feceea}
+\definecolor{Stop}{HTML}{D0D0D0}
+\graphicspath{{figures/}{figures/introduction}}
+\makeatletter
+\makeatother
+
+%%%%% Initialize glossaries before begin
+\input{parts/Glossaire}
+
+%%%%% THE ACTUAL DOCUMENT STARTS HERE
+\begin{document}
+    \pagenumbering{gobble}
+    \hypersetup{pageanchor=false}
+    \input{parts/1_page_garde}
+    
+%%%%% CHOOSE YOUR LINE SPACING HERE
+    \setlength{\textbaselineskip}{2em}
+% You can set the spacing here for the roman-numbered pages (acknowledgements, table of contents, etc.)
+    \setlength{\frontmatterbaselineskip}{1em}
+% Leave this line alone; it gets things started for the real document.
+    \setlength{\baselineskip}{\textbaselineskip}
+
+%%%%% CHOOSE YOUR SECTION NUMBERING DEPTH HERE
+% The level that gets a number:
+    \setcounter{secnumdepth}{2}
+% The level that shows up in the ToC:
+    \setcounter{tocdepth}{3}
+    \setcounter{minitocdepth}{3}
+
+%%%%% ABSTRACT
+    \setlength{\baselineskip}{1.5\frontmatterbaselineskip}
+    \begin{alwayssingle}
+        \input{parts/2_resumé}
+    \end{alwayssingle}
+
+%%%%% ACKNOWLEDGEMENTS
+    \begin{alwayssingle}
+    	\input{parts/3_remerciements}
+	\end{alwayssingle}
+	
+%%%%% MINI TABLES
+    \hypersetup{pageanchor=true}
+    \begin{romanpages}
+        \setlength{\baselineskip}{1.5\frontmatterbaselineskip}
+        \setlength{\baselineskip}{\frontmatterbaselineskip}
+        \dominitoc % include a mini table of contents
+%\dominilof  % include a mini list of figures
+%\dominilot  % include a mini list of tables
+% This aligns the bottom of the text of each page.  It generally makes things look better.
+        \flushbottom
+% This is where the whole-document ToC appears:
+        {\setlength{\baselineskip}{1.1\frontmatterbaselineskip}
+        \hypersetup{linkcolor=GREYDARK}
+        \tableofcontents
+        \listoffigures
+        \mtcaddchapter
+        %\listoftables
+        %\mtcaddchapter
+        }
+        %{\setlength{\baselineskip}{1.1\frontmatterbaselineskip}
+        %\input{parts/Glossaire}
+        %}
+    \end{romanpages}
+
+%%%% Glossaries
+\printglossary[type=\acronymtype]
+\printglossary
+\mtcaddchapter
+\mtcaddchapter
+
+%%%% CHAPTERS
+    \setlength{\baselineskip}{1.5\frontmatterbaselineskip}
+    \pagenumbering{arabic}
+    \flushbottom
+    \input{parts/4_avant_propos}
+    \pagestyle{fancybook}
+
+    \part{Introduction}
+    \label{part:intro}
+    \input{parts/5_intro_gene_expression}
+    \input{parts/6_intro_gene_regulation}
+    \input{parts/7_intro_evolution}
+    \input{parts/8_intro_objectifs}
+    
+    \part{Associer les gènes aux éléments cis-régulateurs}
+    \label{part:chap2}
+    \input{parts/9_chapitre2}
+
+    \part{Relation entre l’évolution du paysage cis-régulateur et l’évolution de l’expression des gènes}
+    \label{part:chap3}
+    \input{parts/10_chapitre3}
+    
+    \part{Convergence de l’évolution du paysage cis-régulateur et du développement du phallus chez les oiseaux}
+    \label{part:chap4}
+    \input{parts/12_chapitre4}
+    
+    \part{Discussion}
+    \label{part:discussion}
+    \input{parts/13_discussion}
+
+%% APPENDICES %% 
+    \part{Annexes}
+    \input{parts/Annexes}
+    % \thispagestyle{empty}
+    % \chapter{Inferring long-term population size - Supplementary Materials}
+    % {\hypersetup{linkcolor=GREYDARK}\minitoc}
+    % \label{chap:MutSelDrift-SuppMat}
+    % \input{MutationSelectionDrift/MutSelDrift-supp-mat}
+
+    % \thispagestyle{empty}
+    % \chapter{Article 2 - Texte Supplémentaire}
+    % \phantomsection
+    % \label{sec-appendix:Chap3-SupText}
+    % \includepdf[pages=1-]{annexes/Supp_Text_Laverre2022.pdf}
+
+%%%%% REFERENCES
+    \thispagestyle{empty}
+    \bibliographystyle{ref/natbib}
+    \bibliography{ref/these}
+
+\end{document}
+
