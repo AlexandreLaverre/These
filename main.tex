@@ -15,13 +15,12 @@
 
 %%%%% CHOOSE PAGE LAYOUT
 %\documentclass[a4paper,openright,twoside]{thesis}
-\documentclass[a4paper,oneside,nobind]{thesis}
+\documentclass[a4paper,twoside,nobind]{thesis}
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{natbib}
 \usepackage{bm}
 \usepackage{bbm}
-%\usepackage{flipbook}
 \definecolor{Nonpolar}{HTML}{fef1d2}
 \definecolor{Polar}{HTML}{a9fdd8}
 \definecolor{Basic}{HTML}{d7f8ff}
@@ -31,11 +30,36 @@
 \makeatletter
 \makeatother
 
+%%%% FlipBook
+\usepackage{flipbook}
+\newcommand{\initflipbook}{
+\fancyfoot[RO]{                           % Flipbook at right foot in odd pages
+\setlength\unitlength{1cm}                % Specify the units
+  \begin{picture}(0,0)                    % New picture
+    \put(-1.2,-1.0){                        % Position of the picture
+      \fbImageF{figures/flipbook/slide}{png}{width=4cm} % Insert numbered picture in increasing order. Directory: ./Fig/Flipbook. Prefix of all pictures: image_ (in fact image_1, image_2, ...). Extension of the pictures: png. 
+     }
+ \end{picture}
+}
+\fancyfoot[LE]{                           % Flipbook at right foot in odd pages
+\setlength\unitlength{1cm}                % Specify the units
+  \begin{picture}(0,0)                    % New picture
+    \put(-3.5,-1){                        % Position of the picture
+      \fbImageF{figures/flipbook/slide}{png}{width=4cm} % Insert numbered picture in increasing order. Directory: ./Fig/Flipbook. Prefix of all pictures: image_ (in fact image_1, image_2, ...). Extension of the pictures: png. 
+     }
+ \end{picture}
+}
+}
+
 %%%%% Initialize glossaries before begin
 \input{parts/Glossaire}
 
 %%%%% THE ACTUAL DOCUMENT STARTS HERE
 \begin{document}
+
+%mini-toc in french:
+\mtcselectlanguage{french} 
+\initflipbook
     \pagenumbering{gobble}
     \hypersetup{pageanchor=false}
     \input{parts/1_page_garde}
@@ -95,12 +119,21 @@
 \mtcaddchapter
 \mtcaddchapter
 
+
+%%%%% Avant-propos
+    \setlength{\baselineskip}{1.5\frontmatterbaselineskip}
+    \begin{alwayssingle}
+        \input{parts/4_avant_propos}
+        % Start page numbering
+        \pagenumbering{arabic}
+    \end{alwayssingle}
+    
 %%%% CHAPTERS
     \setlength{\baselineskip}{1.5\frontmatterbaselineskip}
-    \pagenumbering{arabic}
     \flushbottom
-    \input{parts/4_avant_propos}
     \pagestyle{fancybook}
+     % reset flipbook after change of format
+    \initflipbook{}
 
     \part{Introduction}
     \label{part:intro}
@@ -108,10 +141,11 @@
     \input{parts/6_intro_gene_regulation}
     \input{parts/7_intro_evolution}
     \input{parts/8_intro_objectifs}
-    
+
     \part{Associer les gènes aux éléments cis-régulateurs}
     \label{part:chap2}
     \input{parts/9_chapitre2}
+    \input{parts/9bis_GOntact}
 
     \part{Relation entre l’évolution du paysage cis-régulateur et l’évolution de l’expression des gènes}
     \label{part:chap3}
@@ -120,10 +154,11 @@
     \part{Convergence de l’évolution du paysage cis-régulateur et du développement du phallus chez les oiseaux}
     \label{part:chap4}
     \input{parts/12_chapitre4}
+    \input{parts/13_IPLOSS}
     
     \part{Discussion}
     \label{part:discussion}
-    \input{parts/13_discussion}
+    \input{parts/14_discussion}
 
 %% APPENDICES %% 
     \part{Annexes}

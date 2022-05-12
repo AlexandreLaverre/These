@@ -22,6 +22,7 @@
 \usepackage{lmodern}
 \usepackage[utf8]{inputenc}
 \usepackage[french]{babel}
+\DeclareUnicodeCharacter{03B2}{\ensuremath{\beta}}
 
 \newif\ifmc@nobind
 \mc@nobindfalse
@@ -217,6 +218,7 @@
 % To format the bibliography	
 \usepackage[nohints,tight]{minitoc}
 \setcounter{minitocdepth}{2} 
+
 % Generates mini tables of contents per chapter
 % JEM: The following fixes minitoc to not be multiple-spaced.
 \let\oldmtc@verse\mtc@verse
@@ -393,24 +395,3 @@
 }
 
 \iffalse
-% Flipbook
-\fancyfoot{} % Clear footer
-% Add flipbook frames to the footer, next to page numbers
-\if@twoside
-	\fancyfoot[RO]{%
-		\labeledflipbookframe[0][0.5]{figures/flipbook_frames/slide_}[pgf][0.2]{r}{\thepage}{2em}%
-	}
-	\fancyfoot[LE]{%
-		\labeledflipbookframe[0][0.5]{figures/flipbook_frames/slide_}[pgf][0.2]{l}{\thepage}{2em}%
-	}
-\else
-	\fancyfoot[C]{
-		\labeledflipbookframe{figures/flipbook_frames/slide_}[pgf][0.2]{c}{\thepage}{2em}%
-	}
-\fi
-\fancypagestyle{plain}{% Clear header for chapter pages and such
-	\fancyhead{}
-	\renewcommand{\headrulewidth}{0pt}
-}
-\makeatother
-\fi
