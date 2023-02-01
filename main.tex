@@ -14,11 +14,10 @@
 % as specified in the MIT License included in this distribution's LICENSE file.
 
 %%%%% CHOOSE PAGE LAYOUT
-%\documentclass[a4paper,openright,twoside]{thesis}
-\documentclass[a4paper,twoside,nobind]{thesis}
-\usepackage{hyperref}
+\documentclass[a4paper,openright,twoside, nobind]{thesis}
+\usepackage{textgreek}
+\usepackage[unicode]{hyperref}
 \usepackage{amsmath}
-\usepackage{natbib}
 \usepackage{bm}
 \usepackage{bbm}
 \definecolor{Nonpolar}{HTML}{fef1d2}
@@ -30,21 +29,26 @@
 \makeatletter
 \makeatother
 
+%%%%% Glossary
+\usepackage[toc, acronym]{glossaries}
+\renewcommand*{\glstextformat}[1]{\textcolor{black}{#1}}
+\makeglossaries
+
 %%%% FlipBook
 \usepackage{flipbook}
 \newcommand{\initflipbook}{
 \fancyfoot[RO]{                           % Flipbook at right foot in odd pages
 \setlength\unitlength{1cm}                % Specify the units
   \begin{picture}(0,0)                    % New picture
-    \put(-1.2,-1.0){                        % Position of the picture
+    \put(-1.7,-1.0){                        % Position of the picture
       \fbImageF{figures/flipbook/slide}{png}{width=4cm} % Insert numbered picture in increasing order. Directory: ./Fig/Flipbook. Prefix of all pictures: image_ (in fact image_1, image_2, ...). Extension of the pictures: png. 
      }
  \end{picture}
 }
-\fancyfoot[LE]{                           % Flipbook at right foot in odd pages
+\fancyfoot[LE]{                           % Flipbook at left foot in odd pages
 \setlength\unitlength{1cm}                % Specify the units
   \begin{picture}(0,0)                    % New picture
-    \put(-3.5,-1){                        % Position of the picture
+    \put(-3,-1){                        % Position of the picture
       \fbImageF{figures/flipbook/slide}{png}{width=4cm} % Insert numbered picture in increasing order. Directory: ./Fig/Flipbook. Prefix of all pictures: image_ (in fact image_1, image_2, ...). Extension of the pictures: png. 
      }
  \end{picture}
@@ -56,6 +60,16 @@
 
 %%%%% THE ACTUAL DOCUMENT STARTS HERE
 \begin{document}
+
+%%% hyphenation rules
+\hyphenation{d\'e-ve-lop-pe-ment}
+\hyphenation{d\'e-ve-lop-p\'es}
+\hyphenation{d\'e-ve-lop-p\'ees}
+\hyphenation{d\'e-ve-lop-pementaux}
+\hyphenation{am-pli-fi-ca-teurs}
+\hyphenation{am-pli-fi-ca-teur}
+\hyphenation{d'am-pli-fi-ca-teur}
+\hyphenation{d'am-pli-fi-ca-teurs}
 
 %mini-toc in french:
 \mtcselectlanguage{french} 
@@ -108,9 +122,6 @@
         %\listoftables
         %\mtcaddchapter
         }
-        %{\setlength{\baselineskip}{1.1\frontmatterbaselineskip}
-        %\input{parts/Glossaire}
-        %}
     \end{romanpages}
 
 %%%% Glossaries
@@ -118,7 +129,6 @@
 \printglossary
 \mtcaddchapter
 \mtcaddchapter
-
 
 %%%%% Avant-propos
     \setlength{\baselineskip}{1.5\frontmatterbaselineskip}
@@ -159,26 +169,17 @@
     \part{Discussion}
     \label{part:discussion}
     \input{parts/14_discussion}
-
+    \initflipbook
 %% APPENDICES %% 
     \part{Annexes}
     \input{parts/Annexes}
-    % \thispagestyle{empty}
-    % \chapter{Inferring long-term population size - Supplementary Materials}
-    % {\hypersetup{linkcolor=GREYDARK}\minitoc}
-    % \label{chap:MutSelDrift-SuppMat}
-    % \input{MutationSelectionDrift/MutSelDrift-supp-mat}
-
-    % \thispagestyle{empty}
-    % \chapter{Article 2 - Texte Supplémentaire}
-    % \phantomsection
-    % \label{sec-appendix:Chap3-SupText}
-    % \includepdf[pages=1-]{annexes/Supp_Text_Laverre2022.pdf}
-
+    \initflipbook
+    
 %%%%% REFERENCES
     \thispagestyle{empty}
     \bibliographystyle{ref/natbib}
-    \bibliography{ref/these}
-
+    \initflipbook
+    \bibliography{ref/these,ref/GOntact,ref/IPLOSS_refs.bib}
+    \initflipbook
 \end{document}
 

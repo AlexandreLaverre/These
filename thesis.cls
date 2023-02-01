@@ -19,9 +19,14 @@
 \LoadClass[openright,12pt]{report}
 
 % JEM: for crazy multi character set quotes and Unicode and all
+\usepackage{natbib}
 \usepackage{lmodern}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 \usepackage[french]{babel}
+\usepackage[raggedright]{titlesec}
+\selectlanguage{french}
+
 \DeclareUnicodeCharacter{03B2}{\ensuremath{\beta}}
 
 \newif\ifmc@nobind
@@ -52,7 +57,7 @@
 \ifmc@nobind
 \usepackage[includehead,hmargin={3.1cm, 3.1cm}, vmargin={1.5cm,2.7cm}, headsep=.8cm,footskip=1.2cm]{geometry}
 \else
-\usepackage[includehead,hmargin={3.6cm, 2.6cm}, vmargin={1.5cm,2.7cm}, headsep=.8cm,footskip=1.2cm]{geometry}
+\usepackage[includehead, hmargin={3.6cm, 2.6cm}, vmargin={1.5cm,2.7cm}, headsep=.8cm,footskip=1.2cm]{geometry}
 \fi
 
 \usepackage{xcolor, colortbl}
@@ -370,10 +375,6 @@
 \PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{naturalnames}{hyperref}
 
-%%%%% Glossary
-\usepackage[toc, acronym]{glossaries}
-\renewcommand*{\glstextformat}[1]{\textcolor{black}{#1}}
-\makeglossaries
 
 %%%%% BIBLIOGRAPHY SETUP
 \usepackage{natbib} % add [numbers] if I want to count them
