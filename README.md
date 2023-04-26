@@ -1,6 +1,4 @@
-# These
-
-Relationships between cis-regulatory landscape evolution, gene expression evolution and phenotypic evolution in vertebrates
+# Thesis: Relationships between cis-regulatory landscape evolution, gene expression evolution and phenotypic evolution in vertebrates
 
 ## Abstract
 
